@@ -2,34 +2,22 @@ package annix.tello.Communication;
 
 import annix.tello.command.TelloCommand;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 public interface TelloCommunication {
-    /**
-     * Establishing connecting to the Tello drone.
+    /** Establece la conexion con Tello Drone.
      */
     boolean connect();
-    /**
-     * Executes commands on Tello drone.
-     * @param telloCommand The command to be executed.
-     * @return True if the executin was sucessful, false if not.
-     * @throws IOException
+    /** Envia comandos a Tello drone.
      */
+    boolean disconnect();
+
     boolean sendData(final TelloCommand telloCommand);
 
+    //void executeCommands(final List<TelloCommand> telloCommandList);
 
-
-    void executeCommands(final List<TelloCommand> telloCommandList);
-
-    void disconnect();
-
-    /**
-     * Obtains data about the Tello drone.
-     *
-     * @param valuesToBeObtained Valus to be obtained from the drone.
-     * @return Map of the data.
+    /** Optener datos acerca del Tello drone.
      */
-    Map<String, String> getTelloOnBoardData(List<String> valuesToBeObtained);
+    //Map<String, String> getTelloOnBoardData(List<String> valuesToBeObtained);
 }

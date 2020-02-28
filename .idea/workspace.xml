@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="697ba447-431d-4b56-a46b-cbbd4b0cd4b4" name="Default Changelist" comment="" />
+    <list default="true" id="697ba447-431d-4b56-a46b-cbbd4b0cd4b4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/annix/tello/Communication/TelloCommunication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/annix/tello/Communication/TelloCommunication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/annix/tello/Communication/TelloCumunicationExec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/annix/tello/Communication/TelloCommunicationExec.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/annix/tello/Telemetry/TelloDrone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/annix/tello/Telemetry/TelloDrone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/annix/tello/Telemetry/TelloDroneConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/annix/tello/Telemetry/TelloDroneConnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/annix/tello/command/TelloCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/annix/tello/command/TelloCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/annix/tello/command/TelloCommandExec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/annix/tello/command/TelloCommandExec.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/annix/tello/command/TelloCommandValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/annix/tello/command/TelloCommandValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/annix/tello/command/TelloCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/annix/tello/command/TelloCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/annix/tello/command/TelloCommandValue.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/annix/tello/command/TelloCommandValue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +35,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1YOjPx6Rdej8ji20RtRSUUA2u2f" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -28,7 +47,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../dji-tello-master" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -70,41 +90,54 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2510" y="248" key="#com.intellij.ide.util.ExportDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582822423933" />
-    <state x="2685" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1582842726826">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="612" y="187" key="#com.intellij.ide.util.MemberChooser" timestamp="1582926317976">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="612" y="187" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582926317976" />
     <state x="2685" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582842726826" />
     <state x="2560" y="248" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1582841745296">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2560" y="248" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582841745296" />
+    <state x="479" y="163" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582927696378">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="479" y="163" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582927696378" />
     <state x="2660" y="275" key="FileChooserDialogImpl" timestamp="1582821084790">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2660" y="275" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582821084790" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1582841758864">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1342" height="195" key="GridCell.Tab.0.bottom" timestamp="1582906837009">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1342" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582906837009" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582841758864" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1582841758864">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1342" height="195" key="GridCell.Tab.0.center" timestamp="1582906837009">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1342" height="195" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582906837009" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582841758864" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1582841758864">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1342" height="195" key="GridCell.Tab.0.left" timestamp="1582906837009">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1342" height="195" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582906837009" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582841758864" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1582841758864">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1342" height="195" key="GridCell.Tab.0.right" timestamp="1582906837009">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1342" height="195" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582906837009" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582841758864" />
-    <state x="2410" y="175" key="Maven.ArtifactSearchDialog" timestamp="1582841893580">
+    <state x="2410" y="175" key="Maven.ArtifactSearchDialog" timestamp="1582843970977">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2410" y="175" key="Maven.ArtifactSearchDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582841893580" />
+    <state x="2410" y="175" key="Maven.ArtifactSearchDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582843970977" />
     <state x="2381" y="162" key="SettingsEditor" timestamp="1582822650073">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2381" y="162" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582822650073" />
+    <state x="491" y="45" key="refactoring.ChangeSignatureDialog" timestamp="1582930901041">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="491" y="45" key="refactoring.ChangeSignatureDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1582930901041" />
   </component>
 </project>

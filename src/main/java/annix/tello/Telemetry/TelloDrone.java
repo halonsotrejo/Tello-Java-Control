@@ -14,11 +14,11 @@ public interface TelloDrone {
 
     void setTime(String time);
 
-    //TelloConnection getTelloConnection();
+    TelloState getTelloConnection();
 
-    //void setTelloConnection(TelloConnection telloConnection);
+    void setTelloConnection(TelloState telloConnection);
 
-    //TelloMode getTelloMode();
+    TelloMode getTelloMode();
 
-    //void setTelloMode(TelloMode telloMode);
+    void setTelloMode(TelloMode telloMode);
 }

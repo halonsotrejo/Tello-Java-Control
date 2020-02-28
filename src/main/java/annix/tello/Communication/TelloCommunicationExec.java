@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 /** Enviar y Recibir datos del Drone Tello DJI. */
 
-public class TelloCumunicationExec implements TelloCommunication {
+public class TelloCommunicationExec implements TelloCommunication{
 
     private static final Logger logger = Logger.getLogger(TelloCommunication.class.getName());
 
@@ -28,7 +28,7 @@ public class TelloCumunicationExec implements TelloCommunication {
     /** Puerto UDP del Drone. */
     private Integer commandPort;
 
-    public TelloCumunicationExec() throws TelloException {
+    public TelloCommunicationExec() throws TelloException {
         try{
             this.ipAddress = InetAddress.getByName(TelloDroneConnect.IP_ADDRESS);
             this.commandPort = TelloDroneConnect.COMMAND_PORT;
@@ -47,6 +47,17 @@ public class TelloCumunicationExec implements TelloCommunication {
             logger.info("La Conexion del drone podria no ser establecida");
         }
         return true;
+    }
+
+    public boolean disconnect() {
+        if (this.dataSocket != null || this.stateSocket != null) {
+            this.dataSocket.disconnect();
+            this.dataSocket.close();
+            this.stateSocket.disconnect();
+            this.stateSocket.close();
+            return true;
+        }
+        return false;
     }
 
     public boolean sendData(TelloCommand telloCommand){
@@ -81,22 +92,5 @@ public class TelloCumunicationExec implements TelloCommunication {
         DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
         dataSocket.receive(receivePacket);
         return new String(Arrays.copyOf(receiveData, receivePacket.getLength()), StandardCharsets.UTF_8);
-    }
-
-    public void executeCommands(List<TelloCommand> telloCommandList) {
-
-    }
-
-    public void disconnect() {
-        if (this.dataSocket != null || this.stateSocket != null) {
-            this.dataSocket.disconnect();
-            this.dataSocket.close();
-            this.stateSocket.disconnect();
-            this.stateSocket.close();
-        }
-    }
-
-    public Map<String, String> getTelloOnBoardData(List<String> valuesToBeObtained) {
-        return null;
     }
 }

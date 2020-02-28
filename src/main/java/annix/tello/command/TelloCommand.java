@@ -1,32 +1,28 @@
 package annix.tello.command;
 
-public interface TelloCommand {
+import annix.tello.Exception.TelloException;
 
-    /** Establsihing connection to the Tello Drone.
+public interface TelloCommand {
+    /** Establece la conexion con Tello Drone.
      */
     void connect();
-
-    /** Disconnecting from the drone. If the drone is not landed yet, it will start an automatic landing.
+    /** Desconectando de Tello Drone .
      */
     void disconnect();
-
-    /** Enter command mode. You can only execute commands after this call.
+    /** Ingreza a Modo Comando. Tu puedes solo ejecutar comandos despues de esta funcion.
      */
-    void enterCommandMode();
-
-    /** Taking off from the ground.
+    void enterCommandMode() throws TelloException;
+    /** Despegar del suelo.
      */
     void takeOff();
-
-    /** Landing on the ground.
+    /** Aterrizaje en el suelo.
      */
     void land();
-
     /** Doing a flip in the chosen direction. @param telloFlip Type of the flip.
      */
     //void doFlip(TelloFlip telloFlip);
 
-    /** Settign the drone's speed. @param speed Chosen speed.
+    /** Ajuste la velocidad del dron. velocidad @param Velocidad elegida.
      */
     void setSpeed(Integer speed);
 
