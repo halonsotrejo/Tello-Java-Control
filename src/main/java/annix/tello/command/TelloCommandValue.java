@@ -2,6 +2,8 @@ package annix.tello.command;
 
 public class TelloCommandValue {
 
+    /** Comandos que recibe el Drone Tello */
+
     public static final String COMMAND_MODE = "command";
 
     public static final String TAKE_OFF = "takeoff";

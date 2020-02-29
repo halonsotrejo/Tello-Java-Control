@@ -5,7 +5,7 @@ public class TelloDroneConnect implements TelloDrone {
     /** Direccion IP de Conexion.
      * */
     public static final String IP_ADDRESS = "192.168.10.1";
-    /** Puerto UDP de conexion.
+    /** Puertos UDP de conexion.
      */
     public static final Integer COMMAND_PORT = 8889;
     public static final Integer STATE_PORT = 8890;

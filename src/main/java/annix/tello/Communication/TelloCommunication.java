@@ -6,18 +6,26 @@ import java.util.List;
 import java.util.Map;
 
 public interface TelloCommunication {
-    /** Establece la conexion con Tello Drone.
+
+    /** Establece la conexion con el Tello Drone.
      */
     boolean connect();
-    /** Envia comandos a Tello drone.
+
+    /** Ejecuta los comando a Tello drone.
+     * @param telloCommand El comando a ser ejecutado.
+     * @return True si la ejecucion fue satisfactoria, false si no.
+     * @throws IOException
      */
-    boolean disconnect();
+    boolean executeCommand(final TelloCommand telloCommand);
 
-    boolean sendData(final TelloCommand telloCommand);
+    void executeCommands(final List<TelloCommand> telloCommandList);
 
-    //void executeCommands(final List<TelloCommand> telloCommandList);
+    void disconnect();
 
-    /** Optener datos acerca del Tello drone.
+    /** Obtiene los datos acerca del Drone Tello.
+     *
+     * @param valuesToBeObtained Valores optenidos del Drone Tello.
+     * @return Mapa de Datos.
      */
-    //Map<String, String> getTelloOnBoardData(List<String> valuesToBeObtained);
+    Map<String, String> getTelloOnBoardData(List<String> valuesToBeObtained);
 }

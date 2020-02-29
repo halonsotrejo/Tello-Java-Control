@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -16,81 +17,131 @@ import java.util.logging.Logger;
 
 public class TelloCommunicationExec implements TelloCommunication{
 
-    private static final Logger logger = Logger.getLogger(TelloCommunication.class.getName());
+    private static final Logger logger = Logger.getLogger(TelloCommunicationExec.class.getName());
 
-    /** Datagram connection to the Tello drone. */
-    private DatagramSocket dataSocket;
-    private DatagramSocket stateSocket;
+    /** Conexion Datagram con Tello drone.
+     */
+    private DatagramSocket ds;
 
-    /** Direccion IP del Drone. */
+    /** Direccion IP del Drone Tello.
+     */
     private InetAddress ipAddress;
 
-    /** Puerto UDP del Drone. */
-    private Integer commandPort;
+    /** Puerto UDP del Drone Tello.
+     */
+    private Integer udpPort;
 
     public TelloCommunicationExec() throws TelloException {
-        try{
+        try {
             this.ipAddress = InetAddress.getByName(TelloDroneConnect.IP_ADDRESS);
-            this.commandPort = TelloDroneConnect.COMMAND_PORT;
-        }catch (UnknownHostException e){
-            throw new TelloException("Dispositivo Desconocido");
+            this.udpPort = TelloDroneConnect.COMMAND_PORT;
+        } catch (UnknownHostException e) {
+            throw new TelloException("Unknown host");
         }
     }
 
-    public boolean connect() {
-        try{
-            dataSocket = new DatagramSocket();
-            dataSocket.connect(this.ipAddress, this.commandPort);
-            stateSocket = new DatagramSocket();
-            stateSocket.connect(this.ipAddress,this.commandPort);
+    /** Realiza la conexion con el Drone Tello.
+     */
+    @Override
+    public boolean connect(){
+        try {
+            ds = new DatagramSocket(udpPort);
+            ds.connect(ipAddress, udpPort);
         } catch (SocketException e) {
-            logger.info("La Conexion del drone podria no ser establecida");
+            logger.info("No se pudo establecer la conexión con el drone.");
+            //throw new TelloException("Could not connect");
         }
         return true;
     }
 
-    public boolean disconnect() {
-        if (this.dataSocket != null || this.stateSocket != null) {
-            this.dataSocket.disconnect();
-            this.dataSocket.close();
-            this.stateSocket.disconnect();
-            this.stateSocket.close();
-            return true;
-        }
-        return false;
-    }
-
-    public boolean sendData(TelloCommand telloCommand){
-
-        if(telloCommand == null){
-            logger.info("Comando es null");
+    /** Envia y recibe los comando a el Drone Tello
+     * @param comando de tipo TelloCommand
+     */
+    @Override
+    public boolean executeCommand(final TelloCommand telloCommand) {
+        if (telloCommand == null) {
+            logger.info("Comando Tello es nulo");
             return false;
         }
-        if(!dataSocket.isConnected()){
-            logger.info("Desconexion con el dispositivo Tello");
+        if (!ds.isConnected()) {
+            logger.info("TConexion perdida con Tello");
             return false;
         }
 
-        final String command = telloCommand.toString();
-        logger.info("Ejecutando Comando Tello: " + command);
+        final String command = telloCommand.composeCommand();
+        logger.info("Ejecutando comando Tello: " + command);
 
         try {
-            final byte[] data = command.getBytes();
-            dataSocket.send(new DatagramPacket(data, data.length, this.ipAddress, this.commandPort));
+            sendData(command);
             String response = receiveData();
-            logger.info("Respuesta del dispositivo Tello: " + response);
+            logger.info("Tello response: " + response);
         } catch (IOException e) {
-            logger.info("Excepcion ocurrida durante el envio y recepcion de comandos");
+            logger.info("Exception occurred during sending and receiving command");
             logger.info(e.getMessage());
             return false;
         }
         return true;
     }
 
+    @Override
+    public Map<String, String> getTelloOnBoardData(List<String> valuesToBeObtained) {
+        Map<String, String> dataMap = new HashMap<>();
+
+        return dataMap;
+    }
+
+    private String executeReadCommand(TelloCommand telloCommand) throws TelloException {
+        if (telloCommand == null) {
+            logger.info("Comando fue nulo");
+            throw new TelloException("Comando fue vacio");
+        }
+        if (!ds.isConnected()) {
+            logger.info("Conexion perdida con Tello");
+            throw new TelloException("No Conexion");
+        }
+
+        final String command = telloCommand.composeCommand();
+        logger.info("Ejecutando comandos Tello: " + command);
+
+        try {
+            sendData(command);
+            String response = receiveData();
+            return response;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public void executeCommands(List<TelloCommand> telloCommandList) {
+
+    }
+
+    @Override
+    public void disconnect() {
+        if (this.ds != null) {
+            this.ds.disconnect();
+            this.ds.close();
+        }
+    }
+
+    private void sendData(String data) throws IOException {
+        byte[] sendData = data.getBytes();
+        final DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipAddress,
+                udpPort);
+        ds.send(sendPacket);
+    }
+
     private String receiveData() throws IOException {
-        final byte[] receiveData = new byte[1024];
-        DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-        dataSocket.receive(receivePacket);
-        return new String(Arrays.copyOf(receiveData, receivePacket.getLength()), StandardCharsets.UTF_8);
+        byte[] receiveData = new byte[1024];
+        final DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+        ds.receive(receivePacket);
+        return trimExecutionResponse(receiveData, receivePacket);
+    }
+
+    private String trimExecutionResponse(byte[] response, DatagramPacket receivePacket) {
+        response = Arrays.copyOf(response, receivePacket.getLength());
+        return new String(response, StandardCharsets.UTF_8);
     }
 }
