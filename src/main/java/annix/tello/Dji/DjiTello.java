@@ -27,6 +27,7 @@ public class DjiTello implements Tello{
     @Override
     public void connect() {
         boolean connectionSuccessful = telloCommunication.connect();
+
         if (connectionSuccessful) {
             telloDrone.setTelloConnection(TelloState.CONNECTED);
             logger.info("Conectado!");
@@ -76,17 +77,30 @@ public class DjiTello implements Tello{
 
     @Override
     public void forward(Integer distance) {
-
+        TelloCommand command = new TelloCommandExec(TelloCommandValue.FORWARD +" "+ String.valueOf(distance));
+        boolean executionSuccessful = telloCommunication.executeCommand(command);
+        if (executionSuccessful) {
+            logger.info("El comando Adelante se ejecutó con éxito");
+        }
     }
 
     @Override
     public void backward(Integer distance) {
+        TelloCommand command = new TelloCommandExec(TelloCommandValue.BACK +" "+ String.valueOf(distance));
+        boolean executionSuccessful = telloCommunication.executeCommand(command);
+        if (executionSuccessful) {
+            logger.info("El comando Atras se ejecutó con éxito");
+        }
 
     }
 
     @Override
     public void right(Integer distance) {
-
+        TelloCommand command = new TelloCommandExec(TelloCommandValue.RIGHT +" "+ String.valueOf(distance));
+        boolean executionSuccessful = telloCommunication.executeCommand(command);
+        if (executionSuccessful) {
+            logger.info("El comando Derecha se ejecutó con éxito");
+        }
     }
 
     @Override

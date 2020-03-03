@@ -1,8 +1,13 @@
 package annix.tello.UI;
 
+import annix.tello.Communication.TelloCommunication;
+import annix.tello.Communication.TelloCommunicationExec;
 import annix.tello.Dji.DjiTello;
 import annix.tello.Dji.Tello;
 import annix.tello.Exception.TelloException;
+import annix.tello.command.TelloCommand;
+import annix.tello.command.TelloCommandExec;
+import annix.tello.command.TelloCommandValue;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,11 +15,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.net.DatagramSocket;
 
 public class TelloUI {
 
     private final JFrame frame;
-    private final JButton takeOffButton,landButton, leftButton;
+    private final JButton takeOffButton,landButton, leftButton, rightButton, backwardButton, fordwardButton;
+    private TelloCommunication telloCommunication;
+    private TelloCommand commandStream;
+    private DatagramSocket ds;
+    private int Port = 11111;
 
     public TelloUI() throws TelloException {
         /* Frame */
@@ -49,6 +59,12 @@ public class TelloUI {
         controlPane.add(landButton);
         leftButton = new JButton("Izquierda");
         controlPane.add(leftButton);
+        rightButton = new JButton("Derecha");
+        controlPane.add(rightButton);
+        fordwardButton = new JButton("Adelante");
+        controlPane.add(fordwardButton);
+        backwardButton = new JButton("Atras");
+        controlPane.add(backwardButton);
 
         contentPane.add(controlPane, BorderLayout.SOUTH);
 
@@ -65,6 +81,21 @@ public class TelloUI {
         leftButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 tello.left(20);
+            }
+        });
+        rightButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                tello.right(20);
+            }
+        });
+        fordwardButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                tello.forward(20);
+            }
+        });
+        backwardButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                tello.backward(20);
             }
         });
 
